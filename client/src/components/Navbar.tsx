@@ -46,7 +46,7 @@ const Navbar = () => {
               Sign In
             </Button>
           </Link>
-          <Link href="/signin">
+          <Link href="/signup">
             <Button
               variant="outline"
               className="text-white bg-secondary-600 hover:bg-white hover:text-primary-700 rounded-lg"
