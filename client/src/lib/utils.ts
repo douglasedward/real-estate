@@ -1,6 +1,8 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { toast } from "sonner";
+import { type AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
+import { type FiltersState } from "@/state";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -33,6 +35,24 @@ export function cleanParams(params: Record<string, any>): Record<string, any> {
     )
   );
 }
+
+export const updateURL = (
+  router: AppRouterInstance,
+  pathname: string,
+  newFilters: FiltersState
+) => {
+  const cleanFilters = cleanParams(newFilters);
+  const updatedSearchParams = new URLSearchParams(cleanFilters);
+
+  Object.entries(cleanFilters).forEach(([key, value]) => {
+    updatedSearchParams.set(
+      key,
+      Array.isArray(value) ? value.join(",") : value.toString()
+    );
+  });
+
+  router.push(`${pathname}?${updatedSearchParams.toString()}`);
+};
 
 type MutationMessages = {
   success?: string;
