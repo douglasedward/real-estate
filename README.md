@@ -81,7 +81,8 @@ npm install
 ```bash
 cd server
 docker compose up -d
-npx prisma migrate dev
+npm run prisma:generate
+npx prisma migrate dev --name init
 npm run seed
 ```
 
@@ -113,6 +114,6 @@ npm run dev
 - `/src/middleware`: Authentication and validation middleware
 - `/prisma`: Database schema and migrations
 
-## License
+## License (To-do)
 
 This project is licensed under the ... - see the LICENSE file for details.
