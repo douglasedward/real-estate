@@ -23,6 +23,8 @@ const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {
       } else {
         setIsLoading(false);
       }
+    } else {
+      setIsLoading(false); // TODO: Refactor this once we have a proper auth flow
     }
   }, [authUser, router, pathname]);
 
@@ -32,7 +34,7 @@ const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {
     <div className="h-full w-full">
       <Navbar />
       <main
-        className={`h-full flex w-full flex-col`}
+        className="h-full flex w-full flex-col"
         style={{ paddingTop: `${NAVBAR_HEIGHT}px` }}
       >
         {children}
