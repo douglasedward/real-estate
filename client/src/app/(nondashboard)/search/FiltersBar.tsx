@@ -25,11 +25,9 @@ const FiltersBar = () => {
   const dispatch = useAppDispatch();
   const router = useRouter();
   const pathname = usePathname();
-  const filters = useAppSelector((state) => state.global.filters);
-  const isFiltersFullOpen = useAppSelector(
-    (state) => state.global.isFiltersFullOpen
+  const { filters, isFiltersFullOpen, viewMode } = useAppSelector(
+    (state) => state.global
   );
-  const viewMode = useAppSelector((state) => state.global.viewMode);
   const [searchInput, setSearchInput] = useState(filters.location);
 
   const debouncedUpdateURL = debounce((newFilters: FiltersState) => {

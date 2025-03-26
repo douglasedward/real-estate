@@ -23,11 +23,10 @@ const FiltersFull = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const pathname = usePathname();
-  const filters = useAppSelector((state) => state.global.filters);
-  const [localFilters, setLocalFilters] = useState(initialState.filters);
-  const isFiltersFullOpen = useAppSelector(
-    (state) => state.global.isFiltersFullOpen
+  const { filters, isFiltersFullOpen } = useAppSelector(
+    (state) => state.global
   );
+  const [localFilters, setLocalFilters] = useState(initialState.filters);
 
   const debouncedUpdateURL = debounce((newFilters: FiltersState) => {
     updateURL(router, pathname, newFilters);

@@ -27,9 +27,7 @@ const parseSearchParams = (key: string, value: string) => {
 const SearchPage = () => {
   const searchParams = useSearchParams();
   const dispatch = useAppDispatch();
-  const isFiltersFullOpen = useAppSelector(
-    (state) => state.global.isFiltersFullOpen
-  );
+  const { isFiltersFullOpen } = useAppSelector((state) => state.global);
 
   useEffect(() => {
     const initialFilters = Array.from(searchParams.entries()).reduce(
