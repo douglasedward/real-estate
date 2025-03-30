@@ -8,6 +8,8 @@ import FiltersBar from "./FiltersBar";
 import FiltersFull from "./FiltersFull";
 import { useEffect } from "react";
 import { setFilters } from "@/state";
+import Map from "./Map";
+import Listings from "./Listings";
 
 const parseRange = (value: string) =>
   value.split(",").map((value) => (value === "" ? null : Number(value)));
@@ -60,8 +62,10 @@ const SearchPage = () => {
         >
           <FiltersFull />
         </div>
-        {/* <Map /> */}
-        <div className="basis-4/12 overflow-y-auto">{/* <Listings /> */}</div>
+        <Map />
+        <div className="basis-4/12 overflow-y-auto">
+          <Listings />
+        </div>
       </div>
     </div>
   );
