@@ -3,7 +3,6 @@
 import { NAVBAR_HEIGHT } from "@/lib/constants";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 import { useGetAuthUserQuery } from "@/state/api";
 import { usePathname, useRouter } from "next/navigation";
 import { signOut } from "aws-amplify/auth";

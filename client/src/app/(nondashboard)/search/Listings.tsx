@@ -10,7 +10,6 @@ import {
 } from "@/state/api";
 import { useAppSelector } from "@/state/redux";
 import { Property } from "@/types/prismaTypes";
-import React from "react";
 
 const Listings = () => {
   const { data: authUser } = useGetAuthUserQuery();
