@@ -36,7 +36,7 @@ export const getProperties = async (
     if (favoriteIds) {
       const favoriteIdsArray = (favoriteIds as string).split(",").map(Number);
       whereConditions.push(
-        Prisma.sql`property.id IN (${Prisma.join(favoriteIdsArray)})`
+        Prisma.sql`p.id IN (${Prisma.join(favoriteIdsArray)})`
       );
     }
 
@@ -246,7 +246,7 @@ export const createProperty = async (
     const longitude = parseFloat(geocodingData.lon) || 0;
 
     const [location] = await prisma.$queryRaw<Location[]>`
-      INSERT INTO "Location" (address, city, state, country, "postalCode", latitude, longitude)
+      INSERT INTO "Location" (address, city, state, country, "postalCode", coordinates)
       VALUES (${address}, ${city}, ${state}, ${country}, ${postalCode}, ST_SetSRID(ST_MakePoint(${latitude}, ${longitude}), 4326))
       RETURNING id, address, city, state, country, "postalCode", ST_AsText(coordinates) as coordinates;
     `;
