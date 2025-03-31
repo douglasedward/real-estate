@@ -7,6 +7,7 @@ import { SidebarProvider } from "@/components/ui/sidebar";
 import { useGetAuthUserQuery } from "@/state/api";
 import { NAVBAR_HEIGHT } from "@/lib/constants";
 import { usePathname, useRouter } from "next/navigation";
+import Loading from "@/components/Loading";
 
 const DashboardLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
   const { data: authUser, isLoading: isAuthLoading } = useGetAuthUserQuery();
@@ -32,7 +33,7 @@ const DashboardLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
     }
   }, [authUser, router, pathname]);
 
-  if (isAuthLoading || isLoading) return <div>Loading...</div>;
+  if (isAuthLoading || isLoading) return <Loading />;
   if (!authUser?.userRole) return null;
 
   return (

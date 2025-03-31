@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import { NAVBAR_HEIGHT } from "@/lib/constants";
 import { useGetAuthUserQuery } from "@/state/api";
 import { usePathname, useRouter } from "next/navigation";
+import Loading from "@/components/Loading";
 
 const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {
   const { data: authUser, isLoading: isAuthLoading } = useGetAuthUserQuery();
@@ -28,7 +29,7 @@ const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {
     }
   }, [authUser, router, pathname]);
 
-  if (isAuthLoading || isLoading) return <div>Loading...</div>;
+  if (isAuthLoading || isLoading) return <Loading />;
 
   return (
     <div className="h-full w-full">
