@@ -161,7 +161,7 @@ export const createApplication = async (
   }
 };
 
-export const updateApplication = async (
+export const updateApplicationStatus = async (
   req: Request,
   res: Response
 ): Promise<void> => {
