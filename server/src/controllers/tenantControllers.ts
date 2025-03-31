@@ -71,7 +71,7 @@ export const updateTenant = async (
   }
 };
 
-export const getTenantProperties = async (
+export const getTenantResidences = async (
   req: Request,
   res: Response
 ): Promise<void> => {
