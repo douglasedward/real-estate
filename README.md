@@ -41,6 +41,12 @@ This application provides a dual-interface system where property managers can li
 - AWS S3 (for file storage)
 - JWT (for API authentication)
 
+## Architecture
+
+The application is built on AWS infrastructure providing scalability, reliability, and security:
+
+![AWS Architecture Diagram](assets/aws-architecture.jpg)
+
 ## Project Structure
 
 ### Client
