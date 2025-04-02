@@ -1,65 +1,91 @@
-# Real Estate Management Platform
+# Real Estate Platform
 
-A production-grade real estate management application built with Next.js, Express, Prisma and PostgreSQL that connects property managers with potential tenants.
+A modern real estate management platform that connects property managers with potential tenants, built with a Next.js frontend and Express backend.
+
+## Overview
+
+This application provides a dual-interface system where property managers can list and manage rental properties while tenants can browse, favorite, and apply for available properties. The platform includes features like property searching with filtering options, application management, lease agreements, and geospatial searching.
 
 ## Features
 
-- **Dual User Roles**: Separate interfaces for property managers and tenants
-- **Property Management**: List, edit, and manage rental properties
-- **Application Processing**: Review and approve tenant applications
-- **Lease Management**: Create and manage lease agreements
-- **Tenant Dashboard**: Browse properties, save favorites, and submit applications
+- **Property Management**: Create, view, and manage rental properties
+- **Role-Based Access**: Separate interfaces for property managers and tenants
+- **Property Search**: Filter properties by price, beds, baths, amenities, etc.
 - **Geospatial Search**: Find properties by location using PostGIS
-- **Secure Authentication**: User authentication via AWS Cognito
+- **Application System**: Submit and review rental applications
+- **Lease Management**: Track and manage lease agreements and payments
+- **Image Uploads**: Store property photos in AWS S3
+- **Authentication**: Secure user authentication with AWS Cognito
 
 ## Tech Stack
 
 ### Frontend
 
-- **Next.js**: React framework with App Router
-- **TypeScript**: Type-safe JavaScript
-- **Redux Toolkit**: State management with RTK Query
-- **Tailwind CSS**: Utility-first CSS framework
-- **AWS Amplify**: Authentication integration
-- **Shadcn UI**: Component library
+- Next.js 15 (with App Router)
+- React 19
+- TypeScript
+- Redux Toolkit (with RTK Query)
+- Tailwind CSS
+- Shadcn UI components
+- AWS Amplify (for authentication)
+- Mapbox GL (for maps)
 
 ### Backend
 
-- **Express.js**: Node.js web application framework
-- **Prisma ORM**: Database access and migrations
-- **PostgreSQL**: Relational database with PostGIS extension
-- **JWT**: Token-based API authentication
-- **AWS S3**: File storage for property images
+- Express.js
+- TypeScript
+- Prisma ORM
+- PostgreSQL (with PostGIS extension)
+- AWS S3 (for file storage)
+- JWT (for API authentication)
 
-## Database Schema
+## Project Structure
 
-The application uses a relational database with the following main models:
+### Client
 
-- **Property**: Rental properties with details like price, amenities, and location
+- `/src/app`: Next.js app router pages and layouts
+- `/src/components`: Reusable UI components
+- `/src/types`: TypeScript type definitions
+- `/src/state`: Redux store configuration and API slices
+- `/src/lib`: Utility functions and shared resources
+- `/src/hooks`: Custom React hooks
+
+### Server
+
+- `/src/controllers`: Request handlers for API endpoints
+- `/src/routes`: Express route definitions
+- `/src/middleware`: Authentication and validation middleware
+- `/src/lib`: Utility functions and constants
+- `/prisma`: Database schema, migrations, and seed data
+
+## Database Models
+
+- **Property**: Rental properties with details, photos, amenities
 - **Manager**: Property managers who list and manage properties
-- **Tenant**: Users who can browse, favorite, and apply for properties
+- **Tenant**: Users who browse and apply for properties
+- **Location**: Geographical data with PostGIS integration
 - **Application**: Rental applications submitted by tenants
-- **Lease**: Lease agreements between managers and tenants
-- **Location**: Geospatial data for property locations
+- **Lease**: Agreements between managers and tenants
+- **Payment**: Rent payment tracking
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js (v22+)
+- Node.js v22+
 - PostgreSQL with PostGIS extension
-- AWS account for Cognito and S3
+- AWS account (for S3 and Cognito)
 
 ### Installation
 
 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/real-estate-platform.git
-cd real-estate-platform
+git clone https://github.com/douglasedward/real-estate.git
+cd real-estate
 ```
 
-2. Install dependencies for both client and server
+2. Install dependencies
 
 ```bash
 # Install client dependencies
@@ -80,40 +106,39 @@ npm install
 
 ```bash
 cd server
+# Start PostgreSQL
 docker compose up -d
+# Generate Prisma client
 npm run prisma:generate
+# Run migrations
 npx prisma migrate dev --name init
+# Seed initial data
 npm run seed
 ```
 
-5. Start the development servers
+5. Start development servers
 
 ```bash
-# Start the backend server
+# Start server
 cd server
 npm run dev
 
-# Start the frontend application
-cd ../client
+# Start client
+cd client
 npm run dev
 ```
 
-## Development
+## API Endpoints
 
-### Client Structure
+- `GET /properties`: List all properties with optional filters
+- `GET /properties/:id`: Get details of a specific property
+- `POST /properties`: Create a new property (manager only)
+- `GET /applications`: List applications (filtered by tenant/manager)
+- `POST /applications`: Submit a new application (tenant only)
+- `POST /applications/:id/status`: Update status for a specific application (manager only)
+- `GET /leases`: List lease agreements
+- `GET /leases/:id/payments`: Get payments for a specific lease
 
-- `/src/app`: Next.js app router pages
-- `/src/components`: Reusable UI components
-- `/src/state`: Redux store and API queries
-- `/src/types`: TypeScript type definitions
+## License
 
-### Server Structure
-
-- `/src/controllers`: Request handlers
-- `/src/routes`: API route definitions
-- `/src/middleware`: Authentication and validation middleware
-- `/prisma`: Database schema and migrations
-
-## License (To-do)
-
-This project is licensed under the ... - see the LICENSE file for details.
+[MIT License](LICENSE)
