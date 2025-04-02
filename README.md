@@ -2,6 +2,8 @@
 
 A modern real estate management platform that connects property managers with potential tenants, built with a Next.js frontend and Express backend.
 
+![Rentify Platform Preview](assets/rentify_preview.jpg)
+
 ## Overview
 
 This application provides a dual-interface system where property managers can list and manage rental properties while tenants can browse, favorite, and apply for available properties. The platform includes features like property searching with filtering options, application management, lease agreements, and geospatial searching.
