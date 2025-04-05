@@ -41,7 +41,9 @@ const FeaturesSection = () => {
           {[0, 1, 2].map((index) => (
             <motion.div key={index} variants={itemVariants}>
               <FeatureCard
-                imageSrc={`/landing-search${3 - index}.png`}
+                imageSrc={`https://dte4lj9t9uodb.cloudfront.net/realestate/landing-search${
+                  3 - index
+                }.png`}
                 title={
                   [
                     "Trustworthy and Verified Listings",

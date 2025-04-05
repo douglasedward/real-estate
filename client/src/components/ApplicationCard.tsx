@@ -8,7 +8,8 @@ const ApplicationCard = ({
   children,
 }: ApplicationCardProps) => {
   const [imgSrc, setImgSrc] = useState(
-    application.property.photoUrls?.[0] || "/placeholder.jpg"
+    application.property.photoUrls?.[0] ||
+      "https://dte4lj9t9uodb.cloudfront.net/realestate/placeholder.jpg"
   );
 
   const statusColor =
@@ -33,7 +34,11 @@ const ApplicationCard = ({
             height={150}
             className="rounded-xl object-cover w-full lg:w-[200px] h-[150px]"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            onError={() => setImgSrc("/placeholder.jpg")}
+            onError={() =>
+              setImgSrc(
+                "https://dte4lj9t9uodb.cloudfront.net/realestate/placeholder.jpg"
+              )
+            }
           />
           <div className="flex flex-col justify-between">
             <div>
@@ -96,7 +101,7 @@ const ApplicationCard = ({
           <div className="flex gap-4">
             <div>
               <Image
-                src="/landing-i1.png"
+                src="https://dte4lj9t9uodb.cloudfront.net/realestate/landing-i1.png"
                 alt={contactPerson.name}
                 width={40}
                 height={40}
