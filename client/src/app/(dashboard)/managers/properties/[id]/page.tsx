@@ -99,7 +99,7 @@ const PropertyTenants = () => {
                     <TableCell>
                       <div className="flex items-center space-x-3">
                         <Image
-                          src="/landing-i1.png"
+                          src="https://dte4lj9t9uodb.cloudfront.net/realestate/landing-i1.png"
                           alt={lease.tenant.name}
                           width={40}
                           height={40}

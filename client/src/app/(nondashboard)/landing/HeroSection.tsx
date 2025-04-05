@@ -50,7 +50,7 @@ const HeroSection = () => {
   return (
     <div className="relative h-screen">
       <Image
-        src="/landing-splash.jpg"
+        src="https://dte4lj9t9uodb.cloudfront.net/realestate/landing-splash.webp"
         alt="Rentify Rental Platform Hero Section"
         fill
         className="object-cover object-center"

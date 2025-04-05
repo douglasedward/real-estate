@@ -11,7 +11,8 @@ const Card = ({
   propertyLink,
 }: CardProps) => {
   const [imgSrc, setImgSrc] = useState(
-    property.photoUrls?.[0] || "/placeholder.jpg"
+    property.photoUrls?.[0] ||
+      "https://dte4lj9t9uodb.cloudfront.net/realestate/placeholder.jpg"
   );
 
   return (
@@ -24,7 +25,11 @@ const Card = ({
             fill
             className="object-cover"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            onError={() => setImgSrc("/placeholder.jpg")}
+            onError={() =>
+              setImgSrc(
+                "https://dte4lj9t9uodb.cloudfront.net/realestate/placeholder.jpg"
+              )
+            }
           />
         </div>
         <div className="absolute bottom-4 left-4 flex gap-2">
